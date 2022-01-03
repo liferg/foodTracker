@@ -1,0 +1,119 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    
+    <!-- Other CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-md">
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homePage' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log' %}">Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View nutrition</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="homeMainPage">
+        <br>
+        <h1>foodTracker</h1>
+        <br>
+        <h3>Purpose</h3>
+        <p>Tracking calories and macros can be a great tool for anyone looking to improve their health or fitness
+            in some way, as it creates awareness and accountability around food. It can allow you to see whether or not
+            you are eating enough to properly fuel your body, understand which macro and micronutrients are lacking in your diet, 
+            and it can be used as a tool to help with muscle gain and fat loss.
+        </p>
+        <p> While tracking food can be a great tool with many benefits, it can easily become an obsessive or unhealthy habit.
+            Constantly seeing how many calories you've eaten throughout the day can lead people to make decisions around food
+            according to those numbers instead of listening to their body. It can cause feelings shame when they eat more 
+            calories than they deem appropriate, and are discouragement when they don't hit their goal macros to a tee.
+        </p>
+        <p>However, there is a solution to this problem: foodTracker</p>
+        <br>
+        <h3>How it works</h3>
+        <ol>
+            <li>Set the times and days you will to allow yourself to view your calories and macros</li>
+            <li>Go about your day as normal, tracking your food as you go -- without seeing your calories or macros!</li>
+            <li>View your calories and macros once at your set times</li>
+            <li>Assess and make any improvements to your diet accordingly</li>
+            <li>Reach your health and fitness goals without sacrificing your mental health!</li>
+        </ol>
+        <br>
+        <h3>Who it's for</h3>
+        <p>foodTracker is perfect for you if...</p>
+        <ul>
+            <li>You're actively recovering from an eating disorder and are finding your way back to properly fueling your body</li>
+            <li>You have a history of unhealthy relationships with food but still want to track to help you gain muscle, lose fat,
+                or make healthier choices for your body</li>
+            <li>You simply want to become more aware of what you are feeding your body without becoming food-obsessed and risking your mental health</li>
+        </ul>
+      <br>
+        <ul>
+            {% for todoItem in allTodoItems %}
+                <li>{{todoItem.content}}
+                    <form action="/deleteTodo/{{todoItem.id}}/" 
+                            style="display: inline;"
+                            method="post">{% csrf_token %}
+                        <input type="submit" name="Delete"/>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <form action="/addTodo/" method="post">{% csrf_token %}
+            <input type="text" name="content"/>
+            <input type="submit" name="add"/>
+        </form>
+    </div>    
+   </body>
+</html>
+
+<style>
+    body {
+        background:rgb(181, 218, 218);
+    }
+
+    .homeMainPage {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .navbar {
+        background:darkcyan;
+        margin-left: 0px;
+    }
+    .nav-link,
+    .navbar-brand {
+        color: #fff;
+        cursor: pointer;
+    }
+    .nav-link {
+        margin-right: 1em !important;
+    }
+    .nav-link:hover {
+        color: #000;
+    }
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+</style>
