@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Food tracker</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -67,23 +67,6 @@
                 or make healthier choices for your body</li>
             <li>You simply want to become more aware of what you are feeding your body without becoming food-obsessed and risking your mental health</li>
         </ul>
-      <br>
-        <ul>
-            {% for todoItem in allTodoItems %}
-                <li>{{todoItem.content}}
-                    <form action="/deleteTodo/{{todoItem.id}}/" 
-                            style="display: inline;"
-                            method="post">{% csrf_token %}
-                        <input type="submit" name="Delete"/>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <form action="/addTodo/" method="post">{% csrf_token %}
-            <input type="text" name="content"/>
-            <input type="submit" name="add"/>
-        </form>
     </div>    
    </body>
 </html>

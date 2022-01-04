@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Food tracker</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,6 +30,46 @@
             </ul>
         </div>
     </nav>
+
+    <div>
+        <h3>Breakfast</h3>
+        <ul>
+            <li>List of breakfast foods entered on day</li>
+        </ul>
+        <a class="addFood" href="{% url 'addFood' %}">Add food</a>
+        <br>
+        <br>
+    </div>
+
+    <div>
+        <h3>Lunch</h3>
+        <ul>
+            <li>List of lunch foods entered on day</li>
+        </ul>
+        <a class="addFood" href="{% url 'addFood' %}">Add food</a>
+        <br>
+        <br>
+    </div>
+
+    <div>
+        <h3>Dinner</h3>
+        <ul>
+            <li>List of dinner foods entered on day</li>
+        </ul>
+        <a class="addFood" href="{% url 'addFood' %}">Add food</a>
+        <br>
+        <br>
+    </div>
+
+    <div>
+        <h3>Snacks</h3>
+        <ul>
+            <li>List of snacks entered on day</li>
+        </ul>
+        <a class="addFood" href="{% url 'addFood' %}">Add food</a>
+        <br>
+        <br>
+    </div>
 
   </body>
 </html>

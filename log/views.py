@@ -4,3 +4,6 @@ from django.http import HttpResponse
 
 def logView(request):
     return render(request, 'log.html')
+
+def addFoodView(request):
+    return render(request, 'addFoodPage.html')
