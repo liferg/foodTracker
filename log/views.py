@@ -7,3 +7,6 @@ def logView(request):
 
 def addFoodView(request):
     return render(request, 'addFoodPage.html')
+
+def foodSelectedView(request):
+    return render(request, 'foodSelectedPage.html')
