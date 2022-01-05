@@ -10,6 +10,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     
     <!-- Other CSS -->
@@ -17,9 +18,24 @@
   </head>
   <body>
     <h1>Add food</h1>
+    <div class="input-group">
+        <div class="form-outline">
+          <input id="searchfood-input" type="search" class="form-control" placeholder="Search"/> 
+        </div>
+        <button id="searchfood-button" type="button" class="btn btn-primary" onclick="searchFood()">
+            <i class="bi-search"></i>
+        </button>
+    </div>
+    <br>
     <a class="suggestedFood" href="{% url 'foodSelected' %}">Suggested food</a>
   </body>
 </html>
+
+<script>
+    function searchFood() {
+        // TODO: add functionality to make this use the API to search for foods with what is entered in the search bar
+    }
+</script>
 
 <style>
     body {
