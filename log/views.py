@@ -1,4 +1,4 @@
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -10,3 +10,10 @@ def addFoodView(request):
 
 def foodSelectedView(request):
     return render(request, 'foodSelectedPage.html')
+
+def searchEnteredFood(request):
+    search = request.GET.get('searchTerm')
+    response = {
+        'search' : search
+    }
+    return JsonResponse(response)

@@ -17,10 +17,26 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   </head>
   <body>
+    <nav class="navbar navbar-expand-md">
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homePage' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log' %}">Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View nutrition</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
     <h1>Add food</h1>
     <div class="input-group">
         <div class="form-outline">
-          <input id="searchfood-input" type="search" class="form-control" placeholder="Search"/> 
+            <input id="searchfood-input" type="search" class="form-control" name="searchTerm" placeholder="Search"/> 
         </div>
         <button id="searchfood-button" type="button" class="btn btn-primary" onclick="searchFood()">
             <i class="bi-search"></i>
@@ -31,9 +47,28 @@
   </body>
 </html>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     function searchFood() {
-        // TODO: add functionality to make this use the API to search for foods with what is entered in the search bar
+        $.ajax({
+            data: $('#input-group').find('input').serialize(),
+            url: "{% url 'searchEnteredFood' %}",
+            type: "GET",
+            success: successFunc,
+            error: errorFunc
+        });
+    }
+
+    function successFunc() {
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "text");
+        var searchTerm = document.getElementById('searchfood-input').value
+        x.setAttribute("value", searchTerm);
+        document.body.appendChild(x);
+    }
+
+    function errorFunc() {
+        alert('error');
     }
 </script>
 
