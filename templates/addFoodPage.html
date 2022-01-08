@@ -50,12 +50,18 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     function searchFood() {
-        $.ajax({
-            data: $('#input-group').find('input').serialize(),
-            url: "{% url 'searchEnteredFood' %}",
-            type: "GET",
-            success: successFunc,
-            error: errorFunc
+        var settings = {
+            "url": "https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=1&api_key=oSCPMwfMvZkiRn3AwPrcf17WF5wVVqm0eUAxf3Ha",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            var x = document.createElement("INPUT");
+            x.setAttribute("type", "text");
+            var searchTerm = document.getElementById('searchfood-input').value
+            x.setAttribute("value", response.toString());
+            document.body.appendChild(x);
         });
     }
 
