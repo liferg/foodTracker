@@ -34,14 +34,16 @@
     </nav>
     <br>
     <h1>Add food</h1>
-    <div class="input-group">
-        <div class="form-outline">
-            <input id="searchfood-input" type="search" class="form-control" name="searchTerm" placeholder="Search"/> 
+    <form action="searchEnteredFood/" method="post"> {% csrf_token %}
+        <div class="input-group">
+            <div class="form-outline">
+                <input id="searchfood-input" type="search" class="form-control" name="searchTerm" placeholder="Search"/> 
+            </div>
+            <button id="searchfood-button" type="submit" class="btn btn-primary">
+                <i class="bi-search"></i>
+            </button>
         </div>
-        <button id="searchfood-button" type="button" class="btn btn-primary" onclick="searchFood()">
-            <i class="bi-search"></i>
-        </button>
-    </div>
+    </form>   
     <br>
     <a class="suggestedFood" href="{% url 'foodSelected' %}">Suggested food</a>
   </body>
@@ -50,31 +52,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     function searchFood() {
-        var settings = {
-            "url": "https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=1&api_key=oSCPMwfMvZkiRn3AwPrcf17WF5wVVqm0eUAxf3Ha",
-            "method": "GET",
-            "timeout": 0,
-        };
-
-        $.ajax(settings).done(function (response) {
-            var x = document.createElement("INPUT");
-            x.setAttribute("type", "text");
-            var searchTerm = document.getElementById('searchfood-input').value
-            x.setAttribute("value", response.toString());
-            document.body.appendChild(x);
-        });
-    }
-
-    function successFunc() {
-        var x = document.createElement("INPUT");
-        x.setAttribute("type", "text");
-        var searchTerm = document.getElementById('searchfood-input').value
-        x.setAttribute("value", searchTerm);
-        document.body.appendChild(x);
-    }
-
-    function errorFunc() {
-        alert('error');
+        
     }
 </script>
 

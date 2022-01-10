@@ -1,7 +1,7 @@
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
-import http.client
+from .code import searchFood
 
 def logView(request):
     return render(request, 'log.html')
@@ -13,9 +13,5 @@ def foodSelectedView(request):
     return render(request, 'foodSelectedPage.html')
 
 def searchEnteredFood(request):
-    print(data.decode("utf-8"))
-    search = request.GET.get('searchTerm')
-    response = {
-       'search' : search
-    }
-    return JsonResponse(response)
+    result = searchFood()
+    return render(result, 'addFoodPage.html')

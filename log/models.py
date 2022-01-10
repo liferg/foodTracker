@@ -2,18 +2,17 @@ from django.db import models
 
 # Create your models here
 
-# class Food (models.Model):
-#     name = models.TextField()
-#     calories = models.IntegerField()
-#     gramsFat = models.IntegerField()
-#     gramsCarbs = models.IntegerField()
-#     gramsProtein = models.IntegerField()
+class Food (models.Model):
+    description = models.TextField()
+    calories = models.IntegerField()
+    gramsProtein = models.IntegerField()
+    gramsCarb = models.IntegerField()
+    gramsFat = models.IntegerField()
+    gramsFiber = models.IntegerField()
 
-# class SingleDayFood(models.Model):
-#     date = models.DateField()
-#     breakfastFoods = models.QuerySet
-#     lunchFoods = models.QuerySet
-#     dinnerFoods = models.QuerySet
-#     snacks = models.QuerySet
-
+class SingleDayFood(models.Model):
+    date = models.DateField()
+    breakfastFoods = Food.objects
+    lunchFoods = Food.objects
+    dinnerFoods = Food.objects
 
