@@ -1,0 +1,82 @@
+{% load static %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Food tracker</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    
+    <!-- Other CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md">
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homePage' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log' %}">Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View nutrition</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    {% if searchTerm %}
+        {% for food in foods %}
+        <form action="selectFood/" method="post" action="selectFood"> {% csrf_token %}
+            <h3>{{ food.description }} {{food.brand }} </h3>
+            <button name="selectedFood">Select</a>
+            <br/>
+            <br/>
+        </form>    
+        {% endfor %}
+    {% else %}
+        <h3>You didn't enter a search term!</h3>
+    {% endif %}
+  </body> 
+</html>
+
+{% endblock %}
+
+<style>
+    body {
+        background:rgb(181, 218, 218);
+    }
+
+    .homeMainPage {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .navbar {
+        background:darkcyan;
+        margin-left: 0px;
+    }
+    .nav-link,
+    .navbar-brand {
+        color: #fff;
+        cursor: pointer;
+    }
+    .nav-link {
+        margin-right: 1em !important;
+    }
+    .nav-link:hover {
+        color: #000;
+    }
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+</style>
