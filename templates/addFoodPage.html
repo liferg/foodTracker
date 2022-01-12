@@ -32,9 +32,9 @@
             </ul>
         </div>
     </nav>
-    <br>
+    <br/>
     <h1>Add food</h1>
-    <form action="searchEnteredFood/" method="post"> {% csrf_token %}
+    <form action="searchResults/" method="post" action="searchResults"> {% csrf_token %}
         <div class="input-group">
             <div class="form-outline">
                 <input id="searchfood-input" type="search" class="form-control" name="searchTerm" placeholder="Search"/> 
@@ -44,17 +44,10 @@
             </button>
         </div>
     </form>   
-    <br>
+    <br/>
     <a class="suggestedFood" href="{% url 'foodSelected' %}">Suggested food</a>
   </body>
 </html>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-    function searchFood() {
-        
-    }
-</script>
 
 <style>
     body {

@@ -12,6 +12,17 @@ def addFoodView(request):
 def foodSelectedView(request):
     return render(request, 'foodSelectedPage.html')
 
-def searchEnteredFood(request):
-    result = searchFood()
-    return render(result, 'addFoodPage.html')
+def searchResults(request):
+    if request.method == "POST":
+        searchTerm = request.POST['searchTerm']
+        foods = searchFood(searchTerm)
+        return render(request, 'addFoodPageSearchResults.html', {'searchTerm': searchTerm, 'foods':foods})
+    else:
+        return render(request, 'addFoodPageSearchResults.html')
+
+def selectFood(request):
+    if request.method == "POST":
+        selectedFood = request.POST['selectedFood']
+        return render(request, 'foodSelectedPage.html', {'selectedFood': selectedFood})
+    else:
+        return render(request, 'foodSelectedPage.html')

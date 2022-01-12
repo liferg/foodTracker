@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from homePage.views import homePageView, deleteTodoView
-from log.views import foodSelectedView, logView, addFoodView, searchEnteredFood
+from log.views import foodSelectedView, logView, addFoodView, searchResults, selectFood
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('deleteTodo/<int:todoId>/', deleteTodoView, name='deleteTodo'),
     path('addFood/', addFoodView, name='addFood'),
     path('foodSelected/', foodSelectedView, name='foodSelected'),
-    path('addFood/searchEnteredFood/', searchEnteredFood, name='searchEnteredFood')
+    path('addFood/searchResults/', searchResults, name='searchResults'),
+    path('addFood/searchResults/selectFood/', selectFood, name='selectFood'),
 ]
