@@ -36,12 +36,10 @@
     <br>
     {% if searchTerm %}
         {% for food in foods %}
-        <form action="selectFood/" method="post" action="selectFood"> {% csrf_token %}
-            <h3>{{ food.description }} {{food.brand }} </h3>
-            <button name="selectedFood">Select</button>
+            <h3>{{ food.description }} {{food.brand }} {{food.id}} </h3>
+            <a href="{% url 'selectFood'  food.id %}">Select</a>
             <br/>
             <br/>
-        </form>    
         {% endfor %}
     {% else %}
         <h3>You didn't enter a search term!</h3>

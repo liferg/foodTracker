@@ -26,5 +26,5 @@ urlpatterns = [
     path('addFood/', addFoodView, name='addFood'),
     path('foodSelected/', foodSelectedView, name='foodSelected'),
     path('addFood/searchResults/', searchResults, name='searchResults'),
-    path('addFood/searchResults/selectFood/', selectFood, name='selectFood'),
+    path('addFood/searchResults/<foodId>/', selectFood, name='selectFood'),
 ]
