@@ -38,7 +38,7 @@
         {% for food in foods %}
         <form action="selectFood/" method="post" action="selectFood"> {% csrf_token %}
             <h3>{{ food.description }} {{food.brand }} </h3>
-            <button name="selectedFood">Select</a>
+            <button name="selectedFood">Select</button>
             <br/>
             <br/>
         </form>    

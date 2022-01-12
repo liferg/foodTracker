@@ -14,7 +14,6 @@ def searchFood(searchTerm):
     response = requests.get(url, headers)
     data = response.json()
     foods = []
-    print(data)
     for result in data.get('foods'):
         description = result.get('description')
         brandName = ''
@@ -22,7 +21,6 @@ def searchFood(searchTerm):
             brandName = result.get('brandName')
         else:
             brandName = ''
-        print(brandName)
         servingSize = result.get('servingSize')
         servingSizeUnit = result.get('servingSizeUnit')
         for nutrient in result.get('foodNutrients'):
